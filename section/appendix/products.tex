@@ -1,0 +1,27 @@
+In a category with products, we denote the pairing of $f\colon A\to B$ and $g\colon A\to C$ by $\pair{f,g}\colon A\to B\times C$. We will denote copairings by $\copair{-,-}$.
+
+\begin{proof}\label{hello}
+  hello
+\end{proof}
+
+\begin{theorem*}[wow \ref{hello}]\label{page.smc_all_prod_coprod}
+The 2-category $\ssmc$ has all small products and coproducts, and products are strict.
+\end{theorem*}
+\begin{proof}[Sketch of proof]
+Let $J$ be a set and $\cat{C}_\bullet\colon J\to\ssmc$ be an $J$-indexed collection of symmetric monoidal categories. Their product as categories $\prod_{j\in J}\cat{C}_j$ carries a symmetric monoidal structure given elementwise on $J$. It is easy to check that this, together with the usual projections (which are strict monoidal functors), constitutes the product of the $\cat{C}_j$ in $\ssmc$.
+
+The coproduct $\bigsqcup_{j\in J}\cat{C}_j$ has the following set of objects, where $I_j$ is the unit in $\cat{C}_j$:
+\[\color{emphcolor}\mathplain
+\ob\bigg(\bigsqcup_{j\in J}\cat{C}_j\bigg)\coloneqq
+\bigg\{
+c\in\prod_{j\in J}\ob(\cat{C}_j)
+\;\bigg|\;
+c_j=I_j\text{ for all but finitely-many }j\in J
+\bigg\}.
+\]
+The monoidal product is given pointwise (and then replace $I\otimes I$ by $I$). We leave to the reader to check that this, together with the obvious coprojections $\inc_j\colon\cat{C}_j\to\bigsqcup_{j\in J}\cat{C}_j$, constitutes a (2-categorical) coproduct in $\ssmc$, i.e.\ that for any symmetric monoidal category $\cat{X}$, there is an equivalence of categories
+\[\color{emphcolor}mathplain
+  \ssmc\Big(\bigsqcup_{j\in J}\cat{C}_j,\cat{X}\Big)\simeq\prod_{j\in J}\ssmc(\cat{C}_j,\cat{X}).
+\qedhere
+\]
+\end{proof}

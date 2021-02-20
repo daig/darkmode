@@ -1,0 +1,47 @@
+\ProvidesPackage{sty/color-scheme}
+\RequirePackage{sty/color-palette,hyperref}
+
+% sections
+\colorlet{assertcolor}{orange}
+\colorlet{todocolor}{pink}
+\colorlet{defcolor}{blue}
+\colorlet{excolor}{green}
+\colorlet{emphcolor}{white}
+\colorlet{remcolor}{yellow}
+\colorlet{plaincolor}{grey}
+\colorlet{bgcolor}{black}
+
+\colorlet{headingcolor}{emphcolor}
+
+\newcommand{\tassert}[1]{\textcolor{assertcolor}{#1}}
+\newcommand{\ttodo}[1]{\textcolor{todocolor}{#1}}
+\newcommand{\tdef}[1]{\textcolor{defcolor}{#1}}
+\newcommand{\texmp}[1]{\textcolor{excolor}{#1}}
+\newcommand{\temph}[1]{\textcolor{emphcolor}{#1}}
+\newcommand{\tplain}[1]{\textcolor{plaincolor}{#1}}
+\newcommand{\ttplain}[1]{\text{\textcolor{plaincolor}{#1}}}
+
+% polarity
+\newcommand{\tpos}[1]{\textcolor{pink}{#1}}
+\newcommand{\tneg}[1]{\textcolor{blue}{#1}}
+\newcommand{\tneu}[1]{\textcolor{purple}{#1}}
+\newcommand{\tsynt}[1]{\textcolor{grey}{#1}}
+
+% hacks
+\newcommand{\pl}{\tplain{(}}
+\newcommand{\pr}{\tplain{)}}
+\newcommand{\mathemph}{\everymath{\color{emphcolor}}}
+\newcommand{\mathplain}{\everymath{\color{plaincolor}}}
+\newcommand{\displayemph}{\color{emphcolor}}
+
+
+% global style
+
+\pagecolor{black}
+\AtBeginDocument{\color{grey}\global\let\default@color\current@color}
+
+%\everymath{\color{purple}}
+
+\hypersetup{ colorlinks = true, allcolors=teal }
+
+\endinput

@@ -1,0 +1,13 @@
+*.xml
+*.bbl
+*.blg
+*.bcf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.pdf
+*.aux
+*.log
+*.dvi
+*.ptb

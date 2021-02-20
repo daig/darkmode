@@ -1,0 +1,58 @@
+\ProvidesPackage{sty/headings}
+\RequirePackage{sty/color-palette,titlesec}
+
+\titleformat{\section}
+{\color{headingcolor}\normalfont\Large\bfseries}
+{\color{plaincolor}\thesection}{1em}{}
+
+\titleformat{\paragraph}[runin]{\color{headingcolor}\bfseries}{}{}{}
+
+% set the chapter color
+\let\oldchaptitlefont\chaptitlefont
+\renewcommand{\chaptitlefont}{\oldchaptitlefont\color{headingcolor}}
+\renewcommand{\chapnumfont}{\oldchaptitlefont}
+
+% set title color
+\RequirePackage{titling}
+\pretitle{\begin{center}\LARGE\color{headingcolor}}
+\posttitle{\par\end{center}\vskip 0.5em}
+
+\renewcommand{\abstractname}{\textcolor{headingcolor}{Abstract}}
+
+% amsthm %
+\theoremstyle{plain}
+\newtheorem*{theorem*}{\textcolor{assertcolor}{Theorem}} 
+\newtheorem{theorem}{\textcolor{assertcolor}{Theorem}}[chapter] 
+\newtheorem{proposition}[theorem]{\textcolor{assertcolor}{Proposition}}
+\newtheorem*{proposition*}{\textcolor{assertcolor}{Proposition}}
+\newtheorem{corollary}[theorem]{\textcolor{assertcolor}{Corollary}}
+\newtheorem{lemma}[theorem]{\textcolor{assertcolor}{Lemma}}
+\newtheorem{conjecture}[theorem]{\textcolor{todocolor}{Conjecture}}
+
+\theoremstyle{definition}
+
+\newtheorem{definition}[theorem]{\textcolor{defcolor}{Definition}}
+% make optional name name emphcolor
+\def\thmhead@plain#1#2#3{%
+  \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\@upn{#2}}%
+  \thmnote{ {\the\thm@notefont(\temph{#3})}}}
+\let\thmhead\thmhead@plain
+
+\newtheorem{construction}[theorem]{\textcolor{defcolor}{Construction}}
+\newtheorem{notation}[theorem]{\textcolor{defcolor}{Notation}}
+\newtheorem{axiom}{\textcolor{defcolor}{Axiom}}
+\newtheorem*{axiom*}{\textcolor{defcolor}{Axiom}}
+
+\theoremstyle{remark}
+\newtheorem{example}[theorem]{\textcolor{excolor}{Example}}
+\newtheorem{remark}[theorem]{\textcolor{remcolor}{Remark}}
+\newtheorem{warning}[theorem]{\textcolor{todocolor}{Warning}}
+\newtheorem{question}[theorem]{\textcolor{todocolor}{Question}}
+
+\crefalias{chapter}{section}
+
+\renewcommand*{\proofname}{\color{todocolor}{Proof.}}
+
+\newenvironment{mathy} {\[\color{headingcolor} } { \] }
+
+\endinput

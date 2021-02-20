@@ -1,0 +1,95 @@
+\documentclass[11pt, oneside, article]{memoir}
+
+
+\settrims{0pt}{0pt} % page and stock same size
+\settypeblocksize{*}{35pc}{*} % {height}{width}{ratio}
+\setlrmargins{*}{*}{1} % {spine}{edge}{ratio}
+\setulmarginsandblock{1.1in}{1.4in}{*} % height of typeblock computed
+\setheadfoot{\onelineskip}{2\onelineskip} % {headheight}{footskip}
+\setheaderspaces{*}{1.5\onelineskip}{*} % {headdrop}{headsep}{ratio}
+\checkandfixthelayout
+\usepackage[centertags,sumlimits,intlimits,namelimits,reqno]{amsmath}
+\usepackage{latexsym}
+\usepackage{amsfonts,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage[cal=euler,scr=rsfso]{mathalfa}
+\usepackage{newpxtext}
+%\usepackage{exscale}
+\usepackage{enumitem}
+\usepackage{ifthen}
+%\usepackage[T1]{fontenc}
+%\usepackage{breakcites}
+\usepackage[colorlinks,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkblue,breaklinks=true, backref=true]{hyperref}
+\usepackage{sty/agda}
+\usepackage[capitalize]{cleveref}
+\usepackage{sty/macros}
+\usepackage{sty/color-scheme}
+\usepackage{sty/headings}
+
+	
+% cleveref %
+  \newcommand{\creflastconjunction}{, and\nobreakspace} % serial comma
+  \definecolor{darkblue}{rgb}{0,0,0.7} 
+
+
+\usepackage{sty/tikz-stuff}	
+
+% biblatex %
+%\usepackage{biblatex}
+\usepackage[backend=biber, backref, bibencoding=utf8, maxbibnames = 10, style = alphabetic]{biblatex}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\addbibresource{reversibility.bib} 
+
+% backref %
+%\DefineBibliographyStrings{english}{%
+ % backrefpage = {see page},% originally "cited on page"
+  %backrefpages = {see pages},% originally "cited on pages"
+%}
+
+% enumitem %
+  \setlist{noitemsep, nolistsep}
+	\setlist[description]{leftmargin=0em, itemindent=2em}
+		
+\usepackage{subfiles}
+
+%================ Document ================%
+\begin{document}   
+
+\title{Supplying bells and whistles in\\symmetric monoidal categories}
+\author{\tplain{Brendan Fong} \and \tplain{David I.\ Spivak}}
+\date{\vspace{-.3in}}
+  
+\maketitle
+
+%============ Abstract ============%
+\begin{abstract}
+It is common to encounter symmetric monoidal categories $\cat{C}$ for which every object is equipped with an algebraic structure, in a way that is compatible with the monoidal product and unit in $\cat{C}$. We define this formally and say that $\cat{C}$ \emph{supplies} the algebraic structure. For example, the category $\rel$ of relations between sets has monoidal structures given by both cartesian product and disjoint union, and with respect to either one it supplies comonoids. We prove several facts about the notion of supply, e.g.\ that the associators, unitors, and braiding of $\cat{C}$ are automatically homomorphisms for any supply, as are the coherence isomorphisms for any strong symmetric monoidal functor that preserve supplies. We also show that any supply of structure in a symmetric monoidal category can be extended to a supply of that structure on its strictification.
+
+%Along the way, we also prove that the 2-category of SM categories, strong SM functors, and monoidal natural transformations has biproducts, a fact which does not appear to be well-known and which we had difficulty finding in the literature.
+\end{abstract}
+\[ \lensmopht{f}{A}{B} \]
+%\chumorph{F}{f}{\Omega}{A}{B}
+%======== Chapter ========%
+\chapter{introduction}
+\subfile{section/introduction}
+\input{chu.tex}
+
+%======== Chapter ========%
+\chapter{Outlook}
+
+Many of the ideas in this paper should extend to the enriched setting, e.g.\ replacing props and symmetric monoidal categories with 2-props and symmetric monoidal 2-categories, etc. Indeed, in, we work out the theory for the locally posetal case. The results contained here, and their locally posetal generalizations, organize and significantly streamline key arguments in that paper.
+
+We leave the development of the general enriched theory open for future work.
+
+
+%============ Appendix ============%
+\newpage
+\appendix
+
+\chapter{Products, coproducts, and biproducts in $\mathbb{S}\mathsf{MC}$}\label{chap.proofs}
+\subfile{section/appendix/products}
+
+%============ Reference ============%
+\newpage
+\printbibliography
+\end{document}

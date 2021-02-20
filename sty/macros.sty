@@ -1,0 +1,134 @@
+\ProvidesPackage{sty/macros}
+\RequirePackage{sty/color-scheme}
+\RequirePackage{xstring}
+
+\newcommand{\Set}[1]{\mathrm{#1}}%a named set
+\newcommand{\ord}[1]{\underline{#1}}%a natural number, considered as a finite set
+\newcommand{\const}[1]{\mathtt{#1}}%a constant, named element of a set, sort of thing
+\newcommand{\cat}[1]{\mathcal{#1}}%a generic category
+\newcommand{\ccat}[1]{\mathbb{#1}}%a generic category
+\renewcommand{\Cat}[1]{{\mathsf{#1}}}%a named category
+\newcommand{\CCat}[1]{\mathbb{\StrLeft{#1}{1}}\Cat{\StrGobbleLeft{#1}{1}}}%a named category; does not seem to work in section headers...
+\newcommand{\funn}[1]{\mathrm{#1}}%a function
+\newcommand{\funr}[1]{\mathcal{#1}}%a generic functor
+\newcommand{\Funr}[1]{\mathsf{#1}}%a named functor
+\newcommand{\ffunr}[1]{\mathbf{#1}}%a generic 2-functor
+
+
+\DeclareMathOperator{\ob}{\Set{Ob}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\inc}{inc}
+\DeclarePairedDelimiter{\pair}{\langle}{\rangle}
+\DeclarePairedDelimiter{\unary}{{\langle\,}}{{\,\rangle}}
+\DeclarePairedDelimiter{\copair}{[}{]}
+\DeclarePairedDelimiter{\classify}{{\raisebox{1pt}{$\ulcorner$}}}{{\raisebox{1pt}{$\urcorner$}}}
+\DeclarePairedDelimiter{\church}{\xxbracket}{\rrbracket}
+
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\op}{^{\tn{op}}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\tpow}[1]{^{\otimes #1}}
+\newcommand{\strict}[1]{\overline{#1}}
+
+\newcommand{\finset}{\Cat{FinSet}}
+\newcommand{\bij}{\bb}
+\newcommand{\smset}{\Cat{Set}}
+\newcommand{\poset}{\Cat{Poset}}
+\newcommand{\smf}{\Cat{SMF}}
+\newcommand{\ssmc}{\CCat{SMC}}
+
+\renewcommand{\aa}{\mathbb{A}} %Not sure what old \aa did
+\newcommand{\bb}{\mathbb{B}} %Not sure what old \aa did
+\newcommand{\dd}{\mathbb{D}}
+\renewcommand{\ll}{\mathbb{L}} %Old \ll is <<
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\pp}{\mathbb{P}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\zz}{\mathbb{Z}}
+
+\newcommand{\mob}[1]{#1_0}
+
+\newcommand{\rel}{\Cat{Rel}}
+\newcommand{\cospan}{\Cat{Cospan}}
+\newcommand{\zero}{\cat{I}}
+
+\newcommand{\Ldots}[1]{\overset{#1}{\ldots}}
+\newcommand{\Cdots}[1]{\overset{#1}{\cdots}}
+
+
+
+\newcommand{\cp}{\mathbin{\fatsemi}}
+\newcommand{\cocolon}{:\!}
+\newcommand{\iso}{\cong}
+\newcommand{\too}{\longrightarrow}
+\newcommand{\tto}{\rightrightarrows}
+\newcommand{\To}[1]{\xrightarrow{#1}}
+\newcommand{\Too}[1]{\To{\;\;#1\;\;}}
+\newcommand{\from}{\leftarrow}
+\newcommand{\From}[1]{\xleftarrow{#1}}
+\newcommand{\Fromm}[1]{\xleftarrow{\;\;#1\;\;}}
+\newcommand{\tofrom}{\leftrightarrows}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\inj}{\rightarrowtail}
+\newcommand{\Surj}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\Inj}[1]{\overset{#1}{\rightarrowtail}}
+\newcommand{\frsurj}{\twoheadleftarrow}
+\newcommand{\frinj}{\leftarrowtail}
+\newcommand{\ul}[1]{\underline{#1}}
+\renewcommand{\ss}{\subseteq}
+
+
+\newcommand{\qqand}{\qquad\text{and}\qquad}
+\newcommand{\qand}{\quad\text{and}\quad}
+
+\newcommand{\hide}[2][]{#1}
+
+\newcommand{\adjphantom}[3][-.6pt]{\ar[#2, phantom, "#3" yshift=#1]}
+\newcommand{\adj}[5][30pt]{%[size] Cat L, Left, Right, Cat R.
+\begin{tikzcd}[ampersand replacement=\&, column sep=#1]
+  #2\ar[r, shift left=5pt, "{#3}"]\adjphantom{r}{\Rightarrow}\&
+  #5\ar[l, shift left=5pt, "{#4}"]
+\end{tikzcd}
+}
+
+\newcommand{\adjr}[5][30pt]{%[size] Cat R, Right, Left, Cat L.
+\begin{tikzcd}[ampersand replacement=\&, column sep=#1]
+  #2\ar[r, shift left=5pt, "{#3}"]\adjphantom{r}{\Leftarrow}\&
+  #5\ar[l, shift left=5pt, "{#4}"]
+\end{tikzcd}
+}
+
+\newcommand{\pb}[1][very near start]{\ar[dr, phantom, #1, "\lrcorner"]}% pullback
+\newcommand{\po}[1][very near start]{\ar[ul, phantom, #1, "\ulcorner"]}% pushout
+
+\setlength\tabcolsep{3pt}
+\linespread{1.10}
+
+\newcommand{\lo}[2]{
+\color{purple}
+\begin{psmallmatrix}\tpos{#1}\\\tneg{#2}\end{psmallmatrix}
+\normalcolor}
+
+\newcommand{\chumorph}[5]{
+\color{grey}
+\[
+\begin{tikzcd}[ampersand replacement=\&]
+\& \tneu{#1} \& \\
+\tpos{#4^+} \ar[rr, "\tpos{#2^+}"] \ar[rd, harpoon, bend right=38] \ar[dd, shift left=0.7, no head, "\tneu{\overline{#4}}"] \& \& \tpos{#5^+} \ar[dd,phantom, shift left=1.5, "\times"] \ar[ld, harpoon', bend left=38] \\
+ \& \tneu{#3} \& \\
+\tneg{#4^-} \ar[uu, phantom, shift left=1.5, "\times"] \ar[ur, harpoon', bend left=38] \& \& \tneg{#5^-} \ar[uu, no head, shift left=0.7, "\tneu{\overline{#5}}"] \ar[lu, harpoon, bend right=38] \ar[ll, "\tneg{#2^-}"]
+\end{tikzcd}
+\]
+\normalcolor}
+
+\newcommand{\lensmopht}[3]{
+\lo{\mathrm{#1}}{\mathrm{#1^{\sharp}}}\tsynt{\colon}\lo{#2^+}{#2^-}~\tsynt{\to}~\lo{#3^+}{#3^-}
+}
+
+\endinput
